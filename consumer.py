@@ -2,12 +2,15 @@ import pika
 import json
 
 def callback(ch, method, properties, body):
+
     data = json.loads(body)
 
     print("Dato ricevuto:", data)
 
-    if data["umidita"] < 30:
-        print("Attivazione irrigazione")
+    if data["valore"] < 30:
+        print(">>> Attivazione irrigazione")
+    else:
+        print(">>> Irrigazione non necessaria")
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters('localhost')
@@ -23,5 +26,6 @@ channel.basic_consume(
     auto_ack=True
 )
 
-print("In attesa di messaggi...")
+print("Consumer avviato. In attesa di messaggi...")
+
 channel.start_consuming()
