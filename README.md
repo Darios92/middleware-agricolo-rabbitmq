@@ -1,37 +1,22 @@
-# Middleware Asincrono per l'Integrazione dei Sistemi nel Settore Agricolo
+# Middleware agricolo RabbitMQ
 
-Progetto realizzato per il Project Work del corso di Laurea in Informatica per le Aziende Digitali (L-31).
+Progetto sviluppato per il Project Work:
 
-## Obiettivo
-
-Realizzare un middleware orientato allo scambio di messaggi asincroni per l'integrazione di sistemi eterogenei in ambito agricolo.
+"Middleware asincrono per l'integrazione dei sistemi nel settore agricolo"
 
 ## Tecnologie utilizzate
 
-- Python
+- Python 3
 - RabbitMQ
-- JSON
 - Pika
 
-## Architettura
-
-Producer → RabbitMQ → Consumer
-
-Il producer simula un sensore di umidità del terreno.
-
-RabbitMQ riceve e gestisce i messaggi.
-
-Il consumer elabora i dati e simula l'attivazione dell'irrigazione.
-
-## File del progetto
+## File presenti
 
 - producer.py
 - consumer.py
 
-## Caso d'uso
+## Descrizione
 
-Irrigazione intelligente tramite sensori IoT e comunicazione asincrona.
+Il producer simula un sensore di umidità del terreno e invia dati JSON ad una coda RabbitMQ.
 
-## Autore
-
-Dario Salemi
+Il consumer riceve i dati e simula l'attivazione dell'irrigazione quando il valore di umidità scende sotto una soglia prestabilita.
